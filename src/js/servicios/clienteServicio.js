@@ -6,7 +6,6 @@ exports.guardaCliente = async(rut, nombre, direccion, ciudad, telefono, correo) 
     if (clienteEncontrado) {
         throw Error('Cliente ya existe')
     }
-
     const response = await Cliente.create({
         rut,
         nombre,
