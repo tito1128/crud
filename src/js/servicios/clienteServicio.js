@@ -1,13 +1,13 @@
-const cliente = require('../modelos/clienteModelo')
-const mongoose = require('mongoose')
+const Cliente = require('../modelos/clienteModelo')
 
 exports.guardaCliente = async(rut, nombre, direccion, ciudad, telefono, correo) => {
-    const cliente = await cliente.findOne({ rut })
-    if (cliente) {
+    const clienteEncontrado = await Cliente.findOne({ rut })
+
+    if (clienteEncontrado) {
         throw Error('Cliente ya existe')
     }
 
-    const response = await cliente.create({
+    const response = await Cliente.create({
         rut,
         nombre,
         direccion,

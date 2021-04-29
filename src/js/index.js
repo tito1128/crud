@@ -3,12 +3,12 @@ const app = express()
 const config = require('../../config/config')
 
 const bodyParser = require('body-parser')
-    //const morgan = require("morgan");
+const morgan = require("morgan");
 const cors = require('cors')
 
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
-    //app.use(morgan("dev"));
+app.use(morgan("dev"));
 app.use(cors())
 
 const { mongoose } = require("./bd/conexion");
