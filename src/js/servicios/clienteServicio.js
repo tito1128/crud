@@ -49,15 +49,12 @@ exports.editaCliente = async(id, clientes, rut, nombre, direccion, ciudad, telef
         const newCliente = {
             rut: rut ? rut : clientes.rut,
             nombre: nombre ? nombre : clientes.nombre,
-            giro: giro ? giro : clientes.giro,
             direccion: direccion ? direccion : clientes.direccion,
             ciudad: ciudad ? ciudad : clientes.ciudad,
-            comuna: comuna ? comuna : clientes.comuna,
-            region: region ? region : clientes.region,
             telefono: telefono ? telefono : clientes.telefono,
             correo: correo ? correo : clientes.correo,
         }
-        const response = await clientes.findByIdAndUpdate(id, {...newCliente }, { new: true, runValidators: true })
+        const response = await Cliente.findByIdAndUpdate(id, {...newCliente }, { new: true, runValidators: true })
         return ({ data: response });
     } catch (error) {
         return ({ data: null, message: error.message });

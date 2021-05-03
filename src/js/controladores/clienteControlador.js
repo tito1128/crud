@@ -18,7 +18,7 @@ exports.guardaCliente = async(req, res) => {
 exports.editaCliente = async(req, res) => {
     const { id } = req.params
     const { rut, nombre, direccion, ciudad, telefono, correo } = req.body
-    const clientes = await clienteServicio.editaCliente(id)
+    const clientes = await clienteServicio.muestraClientesId(id)
 
     if (!clientes.data) {
         return res.status(400).json({ data: clientes.data, message: "No existe la cliente con id " + id });
